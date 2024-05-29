@@ -164,10 +164,21 @@ class HEAAN:
         # 정렬된 암호문 list 반환
         return sorted_messages
 
-    # matrix를 쪼개 window에 포함되는 요소들을 list에 담는 함수
     def split_matrix(self, matrix, n, s):
         # 입력 행렬의 크기
-        m = len(matrix)
+        h, w = matrix.shape
+
+        # Determine the padding required for height and width
+        padded_size = max(h, w)
+        padded_matrix = np.full((padded_size, padded_size), 0.5)  # Fill with padding value -0.5
+
+        print(f"matrix: {matrix}\n")
+        print(f"padded_matrix: {padded_matrix}\n")
+
+        # Copy original matrix into the padded matrix
+        padded_matrix[:h, :w] = matrix
+
+        print(f"padded_matrix: {padded_matrix}\n")
 
         # 윈도우 사이즈에 맞춰 log_slots, num_slots 값 변경
         self.calculate_send_log_slots(n)
@@ -177,17 +188,17 @@ class HEAAN:
         lists = []
 
         # max값을 찾기위해 비교해야하는 수의 집합으로 matrix 분할
-        for i in range(0, m - n + 1, s):
-            for j in range(0, m - n + 1, s):
-                window = [matrix[x][y] for x in range(i, i + n) for y in range(j, j + n)]
+        for i in range(0, padded_size - n + 1, s):
+            for j in range(0, padded_size - n + 1, s):
+                window = [padded_matrix[x][y] for x in range(i, i + n) for y in range(j, j + n)]
 
                 # 데이터의 길이가 num_slots보다 작을 경우 sort 함수 사용이 가능한 수 중 가장 작은 수인 -0.5를 padding으로 추가
-                if (len(window) < self.num_slots):
+                if len(window) < self.num_slots:
                     window.extend([-0.5] * (self.num_slots - len(window)))
 
                 lists.append(window)
 
-        print(f"split: {lists}\n")
+        # print(f"split: {lists}\n")
         return lists
 
     # max_pooling을 위한 정렬이 진행된 암호문을 받아 처리할 함수

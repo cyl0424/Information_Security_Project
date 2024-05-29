@@ -7,6 +7,7 @@ from forms import ImageForm
 
 main_blueprint = Blueprint('main', __name__)
 
+
 @main_blueprint.route('/', methods=['GET', 'POST'])
 def index():
     form = ImageForm()
@@ -31,21 +32,31 @@ def index():
         processed_folder = current_app.config['PROCESSED_FOLDER']
         if not os.path.exists(processed_folder):
             os.makedirs(processed_folder)
-        processed_filepath = os.path.join(processed_folder, 'processed_' + filename)
+
+        # 파일 확장자 추가
+        name, ext = os.path.splitext(filename)
+        if ext == '':
+            ext = '.jpg'  # 기본 확장자를 jpeg로 설정
+        processed_filename = f'processed_{name}{ext}'
+        processed_filepath = os.path.join(processed_folder, processed_filename)
 
         processed_image.save(processed_filepath)
 
         # 결과 페이지로 리다이렉트 대신 render_template 사용
-        return render_template('processed_result.html', filename='processed_' + filename, time=elapsed_time, max_pooling_result=pooling_result.tolist())
+        return render_template('processed_result.html', filename=processed_filename, time=elapsed_time,
+                               max_pooling_result=pooling_result.tolist())
     return render_template('index.html', form=form)
+
 
 @main_blueprint.route('/processed/<filename>')
 def processed_file(filename):
     return send_from_directory(current_app.config['PROCESSED_FOLDER'], filename)
+
 
 @main_blueprint.route('/result')
 def result():
     filename = request.args.get('filename')
     elapsed_time = request.args.get('time')
     max_pooling_result = request.args.get('max_pooling_result')
-    return render_template('processed_result.html', filename=filename, time=elapsed_time, max_pooling_result=max_pooling_result)
+    return render_template('processed_result.html', filename=filename, time=elapsed_time,
+                           max_pooling_result=max_pooling_result)
