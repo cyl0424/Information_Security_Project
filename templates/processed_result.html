@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Processing Result</title>
+    <style>
+        .fixed-height-img {
+            height: 300px; /* 원하는 고정 높이 값 */
+            width: auto;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Processing Result</h1>
+    <p>Elapsed time: {{ time }} seconds</p>
+    <h2>Max Pooling Result</h2>
+    <table>
+        {% for row in max_pooling_result %}
+        <tr>
+            {% for item in row %}
+            <td>{{ item }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <img src="{{ url_for('main.processed_file', filename=filename) }}" alt="Processed Image" class="fixed-height-img">
+    <a href="{{ url_for('main.index') }}">Back to Home</a>
+</body>
+</html>

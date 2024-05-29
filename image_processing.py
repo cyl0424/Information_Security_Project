@@ -9,4 +9,6 @@ def process_image(image_path, pool_size, stride):
     pooled_image_array = utils.max_pooling(image_array, pool_size, stride)
     pooled_image = Image.fromarray(pooled_image_array.astype('uint8'))
 
-    return pooled_image
+    pooled_result = [pooled_image_array, pooled_image]
+
+    return pooled_result
