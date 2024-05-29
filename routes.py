@@ -4,12 +4,8 @@ import os
 import image_processing as ip
 import time
 from forms import ImageForm
-from heaan_utils import HEAAN
 
 main_blueprint = Blueprint('main', __name__)
-
-he = HEAAN()
-he.initialize()
 
 @main_blueprint.route('/', methods=['GET', 'POST'])
 def index():
