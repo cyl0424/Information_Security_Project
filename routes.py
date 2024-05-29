@@ -16,14 +16,24 @@ def index():
         pool_size = form.pool_size.data
         stride = form.stride.data
         filename = secure_filename(file.filename)
-        filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+
+        upload_folder = current_app.config['UPLOAD_FOLDER']
+        filepath = os.path.join(upload_folder, filename)
+
+        if not os.path.exists(upload_folder):
+            os.makedirs(upload_folder)
+
         file.save(filepath)
 
         start_time = time.time()
         processed_image = ip.process_image(filepath, pool_size, stride)
         elapsed_time = time.time() - start_time
 
-        processed_filepath = os.path.join(current_app.config['PROCESSED_FOLDER'], 'processed_' + filename)
+        processed_folder = current_app.config['PROCESSED_FOLDER']
+        if not os.path.exists(processed_folder):
+            os.makedirs(processed_folder)
+
+        processed_filepath = os.path.join(processed_folder, 'processed_' + filename)
         processed_image.save(processed_filepath)
 
         return redirect(url_for('main.processed_file', filename='processed_' + filename, time=elapsed_time))
