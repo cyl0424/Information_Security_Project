@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Max Pooling Web App</title>
+  </head>
+  <body>
+    <h1>Upload Image for Max Pooling</h1>
+    <form method="post" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      <div>
+        {{ form.file.label }}<br>
+        {{ form.file }}
+      </div>
+      <div>
+        {{ form.pool_size.label }}<br>
+        {{ form.pool_size }}
+      </div>
+      <div>
+        {{ form.stride.label }}<br>
+        {{ form.stride }}
+      </div>
+      <div>
+        {{ form.submit }}
+      </div>
+    </form>
+  </body>
+</html>
