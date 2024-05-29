@@ -5,7 +5,7 @@
     <title>Processing Result</title>
     <style>
         .fixed-height-img {
-            height: 300px; /* 원하는 고정 높이 값 */
+            height: 300px;
             width: auto;
         }
         table {
@@ -22,7 +22,9 @@
     </style>
 </head>
 <body>
+    <div><a href="{{ url_for('main.index') }}">Back to Home</a></div>
     <h1>Processing Result</h1>
+    <img src="{{ url_for('main.processed_file', filename=filename) }}" alt="Processed Image" class="fixed-height-img">
     <p>Elapsed time: {{ time }} seconds</p>
     <h2>Max Pooling Result</h2>
     <table>
@@ -34,7 +36,6 @@
         </tr>
         {% endfor %}
     </table>
-    <img src="{{ url_for('main.processed_file', filename=filename) }}" alt="Processed Image" class="fixed-height-img">
-    <a href="{{ url_for('main.index') }}">Back to Home</a>
-</body>
+    <br>
+    </body>
 </html>
