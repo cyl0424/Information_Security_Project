@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef76106d-582c-4bd2-a1b9-f3fe6d81ce28" name="Changes" comment="redirect to render">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/processed/processed_2024-04-24_3.41.37.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/processed/processed_2024-05-21_6.32.33.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/processed/processed_2024-05-29_2.07.30.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/processed/processed_wheres_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/uploads/2024-04-24_3.41.37.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/uploads/2024-05-21_6.32.33.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/uploads/2024-05-29_2.07.30.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/uploads/png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/uploads/wheres_.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/uploads/wheres_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +18,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Flask Main" />
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -99,7 +90,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1716954251697</updated>
-      <workItem from="1716954272136" duration="5972000" />
+      <workItem from="1716954272136" duration="7396000" />
     </task>
     <task id="LOCAL-00001" summary="flask web draft">
       <option name="closed" value="true" />
@@ -133,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716960306734</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="redirect to render">
+      <option name="closed" value="true" />
+      <created>1716960463769</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716960463769</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
