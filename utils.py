@@ -27,6 +27,6 @@ def max_pooling(image_array, pool_size, stride):
 
     sorted_lists = he.sort_encrypt_messages(encrypted_lists)
 
-    result = he.recieve_data(sorted_lists)
+    result = he.receive_data(sorted_lists)
 
     return (result + 0.5) * 255

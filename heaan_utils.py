@@ -191,7 +191,7 @@ class HEAAN:
         return lists
 
     # max_pooling을 위한 정렬이 진행된 암호문을 받아 처리할 함수
-    def recieve_data(self, encrypt_messages):
+    def receive_data(self, encrypt_messages):
         # 각 window 범위 내 수 중 최댓값을 담을 list
         max_elements = []
 
