@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Processing Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         .fixed-height-img {
             height: 300px;
@@ -19,23 +20,55 @@
             padding: 5px;
             text-align: center;
         }
+
     </style>
 </head>
-<body>
-    <div><a href="{{ url_for('main.index') }}">Back to Home</a></div>
-    <h1>Processing Result</h1>
-    <img src="{{ url_for('main.processed_file', filename=filename) }}" alt="Processed Image" class="fixed-height-img">
-    <p>Elapsed time: {{ time }} seconds</p>
-    <h2>Max Pooling Result</h2>
-    <table>
-        {% for row in max_pooling_result %}
-        <tr>
-            {% for item in row %}
-            <td>{{ item }}</td>
-            {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
-    <br>
-    </body>
+<body class="py-9 bg-gray-100 dark:bg-gray-900">
+<section class="py-8 antialiased dark:bg-gray-900 md:py-16">
+    <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+        <div class="mx-auto max-w-5xl">
+            <div>
+                <a class="flex" href="{{ url_for('main.index') }}">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M5 12h14M5 12l4-4m-4 4 4 4"/>
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+            <div class="py-5">
+                <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Processed Result</h2>
+                <div class="my-8 xl:mb-16 xl:mt-12">
+                    <img class="dark:hidden" src="{{ url_for('static', filename='processed/' ~ filename) }}"
+                         alt="Processed Image"/>
+                </div>
+                <div class="mx-auto max-w-2xl space-y-6">
+                    <p class="text-base font-normal text-gray-500 dark:text-gray-400"></p>
+                </div>
+
+                <div class="mx-auto max-w-5xl">
+                    <p class="font-bold">Elapsed time: {{ time }} seconds</p>
+                    <div class="py-6">
+                        <h2 class="text-lg font-semibold text-gray-900 dark:text-white sm:text-xl">Max Pooling
+                            Result</h2>
+                        <table>
+                            {% for row in max_pooling_result %}
+                            <tr>
+                                {% for item in row %}
+                                <td>{{ item }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+</body>
 </html>

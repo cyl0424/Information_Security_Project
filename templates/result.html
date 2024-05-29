@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Processed Image</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="py-9 bg-gray-100 dark:bg-gray-900">
+<section class="py-8 antialiased dark:bg-gray-900 md:py-16">
+  <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+    <div class="mx-auto max-w-5xl">
+      <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Processed Image</h2>
+      <div class="my-8 xl:mb-16 xl:mt-12">
+        <img class="dark:hidden" src="{{ url_for('static', filename='processed/' ~ filename) }}" alt="Processed Image"  />
+      </div>
+      <div class="mx-auto max-w-2xl space-y-6">
+        <p class="text-base font-normal text-gray-500 dark:text-gray-400"></p>
+      </div>
+    </div>
+        <div class="mx-auto max-w-5xl">
+      <p class="text-md font-semibold text-gray-900 dark:text-white sm:text-lg">소요시간</p>
+    </div>
+  </div>
+</section>
+</body>
+</html>
