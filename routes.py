@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, send_from_directory, current_app
+from flask import Blueprint, render_template, request, send_from_directory, current_app
 from werkzeug.utils import secure_filename
 import os
 import image_processing as ip
