@@ -27,6 +27,7 @@ def index():
 
         start_time = time.time()
         pooling_result, processed_image = ip.process_image(filepath, pool_size, stride)
+        # pooling_result, processed_image = ip.process_image_rgb(filepath, pool_size, stride)
         elapsed_time = time.time() - start_time
 
         processed_folder = current_app.config['PROCESSED_FOLDER']

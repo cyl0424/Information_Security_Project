@@ -115,7 +115,7 @@ class HEAAN:
 
             messages.append(message)
 
-        print(f"plain_list: {messages}\n")
+        # print(f"plain_list: {messages}\n")
 
         # 암호화된 message를 담기 위한 list
         encrypt_messages = []
@@ -125,7 +125,7 @@ class HEAAN:
             encrypt_message = self.encrypt_message(message=i)
             encrypt_messages.append(encrypt_message)
 
-        print(f"encrypt: {encrypt_messages}\n")
+        # print(f"encrypt: {encrypt_messages}\n")
 
         # 암호문이 담긴 list 반환
         return encrypt_messages
@@ -142,7 +142,7 @@ class HEAAN:
 
             sorted_messages.append(ciphertext_out_sort)
 
-        print(f"sort: {sorted_messages}\n")
+        # print(f"sort: {sorted_messages}\n")
 
         # 정렬된 암호문 list 반환
         return sorted_messages
@@ -172,13 +172,13 @@ class HEAAN:
         padded_size = max(h, w)
         padded_matrix = np.full((padded_size, padded_size), 0.5)  # Fill with padding value -0.5
 
-        print(f"matrix: {matrix}\n")
-        print(f"padded_matrix: {padded_matrix}\n")
+        # print(f"matrix: {matrix}\n")
+        # print(f"padded_matrix: {padded_matrix}\n")
 
         # Copy original matrix into the padded matrix
         padded_matrix[:h, :w] = matrix
 
-        print(f"padded_matrix: {padded_matrix}\n")
+        # print(f"padded_matrix: {padded_matrix}\n")
 
         # 윈도우 사이즈에 맞춰 log_slots, num_slots 값 변경
         self.calculate_send_log_slots(n)
@@ -213,7 +213,7 @@ class HEAAN:
 
         # list 형태의 최댓값을 max_pooling 결과로 변환하기 위해 reshape 진행
         result = self.reshape_list_to_matrix(max_elements)
-        print(f"max_pooling_result: {result}\n")
+        # print(f"max_pooling_result: {result}\n")
 
         return result
 

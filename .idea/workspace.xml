@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef76106d-582c-4bd2-a1b9-f3fe6d81ce28" name="Changes" comment="Add Heaan utils">
+    <list default="true" id="ef76106d-582c-4bd2-a1b9-f3fe6d81ce28" name="Changes" comment="add padding to pooling method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/heaan_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/heaan_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/image_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_processing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/processed/processed_2024-05-29_3.28.55.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/uploads/2024-05-29_3.28.55.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/processed_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/processed_result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/processed/processed_penguin_2.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/static/processed/processed_penguin_2.jpeg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +99,7 @@
       <option name="presentableId" value="Default" />
       <updated>1716954251697</updated>
       <workItem from="1716954272136" duration="8525000" />
-      <workItem from="1716999755062" duration="4513000" />
+      <workItem from="1716999755062" duration="5846000" />
     </task>
     <task id="LOCAL-00001" summary="flask web draft">
       <option name="closed" value="true" />
@@ -160,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716964751692</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add padding to pooling method">
+      <option name="closed" value="true" />
+      <created>1717004335537</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1717004335537</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,11 +188,12 @@
     <MESSAGE value="result html 추가" />
     <MESSAGE value="redirect to render" />
     <MESSAGE value="Add Heaan utils" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Heaan utils" />
+    <MESSAGE value="add padding to pooling method" />
+    <option name="LAST_COMMIT_MESSAGE" value="add padding to pooling method" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/is_maxpooling$app.coverage" NAME="app Coverage Results" MODIFIED="1716999416664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/is_maxpooling$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1717003887173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/is_maxpooling$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1717004985354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/is_maxpooling$routes.coverage" NAME="routes Coverage Results" MODIFIED="1716955232634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
