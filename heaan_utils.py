@@ -258,6 +258,10 @@ class HEAAN:
 
     def define_c0(self, ciphertext, ciphertext_s):
         temp_msg = self.sub_message(ciphertext, ciphertext_s)
+        print(f"temp_msg: {temp_msg}")
+        # msg_m = self.create_n_values_msg((1 / 255), self.log_slots)
+        # temp_res = self.mult_message(temp_msg, msg_m)
+
         result = self.sign_message(temp_msg)
 
         return result
@@ -324,7 +328,7 @@ class HEAAN:
         self.evaluator.bootstrap(ciphertext, ciphertext)
 
     def approx_max(self, c, k):
-        print(f"c: {c}")
+        # print(f"c: {c}")
         self.i = 0
 
         c_s = self.define_c_s()
