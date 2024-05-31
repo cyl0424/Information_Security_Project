@@ -38,36 +38,64 @@
                 </a>
             </div>
             <div class="py-5">
-                <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Processed Result</h2>
-                <div class="my-8 xl:mb-16 xl:mt-12">
-                    <img class="fixed-height-img dark:hidden" src="{{ url_for('static', filename='processed/' ~ filename) }}"
-                         alt="Processed Image"/>
-                </div>
-                <div class="mx-auto max-w-2xl space-y-6">
-                    <p class="text-base font-normal text-gray-500 dark:text-gray-400"></p>
-                </div>
-
-                <div class="mx-auto max-w-5xl">
-                    <p class="font-bold">Elapsed time: {{ time }} seconds</p>
-                    <div class="py-6">
-                        <h2 class="text-lg font-semibold text-gray-900 dark:text-white sm:text-xl">Max Pooling
-                            Result</h2>
-                        <table>
-                            {% for row in max_pooling_result %}
-                            <tr>
-                                {% for item in row %}
-                                <td>{{ item }}</td>
-                                {% endfor %}
-                            </tr>
-                            {% endfor %}
-                        </table>
+                <h2 class="text-xl font-semibold text-blue-700 dark:text-white sm:text-2xl">{{ action_text }}</h2>
+                {% if action_text == "Comparison of Max Pooling and Approx Max Pooling" %}
+                <div class="flex my-8 xl:mb-16 xl:mt-12">
+                    <div class="pr-4">
+                        <h3 class="text-lg font-semibold text-green-700 dark:text-white">Max Pooling Result</h3>
+                        <img class="fixed-height-img dark:hidden" src="{{ url_for('static', filename='processed/' ~ filename_max) }}" alt="Max Pooling Image"/>
+                        <p class="font-bold">Elapsed time: {{ time_max }} seconds</p>
                     </div>
-
-                    <br>
+                    <div>
+                        <h3 class="text-lg font-semibold text-red-700 dark:text-white">Approx Max Pooling Result</h3>
+                        <img class="fixed-height-img dark:hidden" src="{{ url_for('static', filename='processed/' ~ filename_approx) }}" alt="Approx Max Pooling Image"/>
+                        <p class="font-bold">Elapsed time: {{ time_approx }} seconds</p>
+                    </div>
                 </div>
+                <div class="py-6">
+                    <h2 class="text-lg font-semibold text-green-700 dark:text-white sm:text-xl">Max Pooling Result Table</h2>
+                    <table>
+                        {% for row in max_pooling_result %}
+                        <tr>
+                            {% for item in row %}
+                            <td>{{ item }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="py-6">
+                    <h2 class="text-lg font-semibold text-red-700 dark:text-white sm:text-xl">Approx Max Pooling Result Table</h2>
+                    <table>
+                        {% for row in approx_pooling_result %}
+                        <tr>
+                            {% for item in row %}
+                            <td>{{ item }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% else %}
+                <div class="my-8 xl:mb-16 xl:mt-12">
+                    <img class="fixed-height-img dark:hidden" src="{{ url_for('static', filename='processed/' ~ filename) }}" alt="Processed Image"/>
+                    <p class="font-bold">Elapsed time: {{ time }} seconds</p>
+                </div>
+                <div class="py-6">
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white sm:text-xl">Max Pooling Result Table</h2>
+                    <table>
+                        {% for row in max_pooling_result %}
+                        <tr>
+                            {% for item in row %}
+                            <td>{{ item }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% endif %}
             </div>
         </div>
-
     </div>
 </section>
 </body>

@@ -38,18 +38,25 @@
           <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image File</label>
           {{ form.file(class_='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500') }}
         </div>
-          <div class="w-full">
-            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pool Size</label>
-            {{ form.pool_size(class_='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500') }}
-        </div>
+           <div class="w-full mb-4">
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pooling window size</label>
+                {{ form.pool_size }}
+            </div>
+
           <div class="w-full">
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stride</label>
             {{ form.stride(class_='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500') }}
           </div>
       </div>
-      <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-        Submit
-      </button>
+    <button type="submit" name="action" value="sort" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+      Sort
+    </button>
+    <button type="submit" name="action" value="approx" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-green-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+      Approx
+    </button>
+    <button type="submit" name="action" value="compare" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-yellow-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+      Compare
+    </button>
     </form>
   </section>
 
