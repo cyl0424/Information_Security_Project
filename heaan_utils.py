@@ -94,40 +94,18 @@ class HEAAN:
 
     # 메시지를 암호화하여 서버측으로 보내는걸 가정하고 구현한 함수
     def send_data(self, matrix_data, n, s):
-        # 윈도우 사이즈 설정
         self.n = n
-
-        # stride 설정
         self.s = s
-
-        # piheaan 연산을 위해 암호화 전 데이터 구조 변경
         split_matrixes = self.split_matrix(matrix_data, self.n, self.s)
-
-        # 암호화할 message를 담기 위한 list
         messages = []
 
-        # 암호화할 message를 생성
         for i in range(len(split_matrixes)):
             message = heaan.Message(self.log_slots)
-
             for j, value in enumerate(split_matrixes[i]):
                 message[j] = value
-
             messages.append(message)
 
-        # print(f"plain_list: {messages}\n")
-
-        # 암호화된 message를 담기 위한 list
-        encrypt_messages = []
-
-        # message의 암호화 진행
-        for i in messages:
-            encrypt_message = self.encrypt_message(message=i)
-            encrypt_messages.append(encrypt_message)
-
-        # print(f"encrypt: {encrypt_messages}\n")
-
-        # 암호문이 담긴 list 반환
+        encrypt_messages = [self.encrypt_message(message=i) for i in messages]
         return encrypt_messages
 
     # 암호화한 데이터 내림차순 정렬
@@ -284,7 +262,7 @@ class HEAAN:
 
         return result
 
-    def defind_c_2(self, ciphertext_1):
+    def define_c_2(self, ciphertext_1):
         msg_m = self.create_n_values_msg((1 / (self.num_slots)), self.log_slots)
         temp_res = self.mult_message(ciphertext_1, msg_m)
         result = self.sign_message(temp_res)
@@ -294,7 +272,4 @@ class HEAAN:
     def increase_i(self):
         self.i += 1
 
-    def find_approx_max(self, encrypt_message):
-        max_idx = 0
 
-        return max_idx
