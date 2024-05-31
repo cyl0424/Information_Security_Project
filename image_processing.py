@@ -103,3 +103,4 @@ def process_image_approx(image_path, pool_size, stride):
     except Exception as e:
         print(f"Error processing image: {e}")
         raise
+
