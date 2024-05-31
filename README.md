@@ -16,17 +16,6 @@ IoT devices are internet-connected objects like security cameras, smart refriger
 ### Project Scope
 Our project focuses on implementing the max pooling function using homomorphic encryption, demonstrating the ability to process encrypted data effectively. This method can be extended to IoT applications, such as smart CCTV systems, but the current scope is limited to the function's implementation and testing.
 
-## Project Plan
-
-### Step 1: Encrypt Raw Data
-Sensitive raw data, such as people's faces and motions, will be encrypted to protect sensitive information.
-
-### Step 2: Training AI Models
-An AI model will be trained using homomorphic encryption operations. Specifically, a CNN model will use max pooling with homomorphic operations to detect anomalous behavior while the data remains encrypted.
-
-### Step 3: Max Pooling
-Max pooling reduces feature map dimensionality by selecting the maximum value in each patch, retaining key features, and discarding less significant details. It enhances translation invariance and reduces computational complexity in video analysis, thereby improving the robustness of anomaly detection.
-
 ## Implementation Steps
 
 ### Step 1: Data Conversion
@@ -100,16 +89,30 @@ Once the application is running, open your browser and go to `http://127.0.0.1:5
 
 ## Demonstration
 - Set up the testing environment (requirements.txt)
-- Upload image(test image is provided) and configure window size and stride values (recommend a window and stride size of 2)
-  <img width="733" alt="스크린샷 2024-05-31 오후 6 39 13" src="https://github.com/cyl0424/Information_Security_Project/assets/63573867/91513774-28d0-4f6b-848b-404b47199df0">
+- Upload image (You can get the test photos in ./static/uploads folder)
+  <table>
+    <tr>
+      <td style="text-align: center;">
+        <img src="https://github.com/cyl0424/Information_Security_Project/assets/63573867/36302dd3-e0b0-40cd-9bf5-b5d62d083b74" alt="test_penguin">
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center; background-color: #f0f0f0;">
+        <b>test_penguin.jpeg</b>
+      </td>
+    </tr>
+  </table>
+
+- Configure window size and stride values (recommend a window and stride size of 2)
+  <img width="792" alt="스크린샷 2024-05-31 오후 6 55 04" src="https://github.com/cyl0424/Information_Security_Project/assets/63573867/c2fae14f-f68d-4e54-b020-d1f9d3337602">
+
 - Check and compare results using sorting and approximate max methods
-  <img width="733" alt="스크린샷 2024-05-31 오후 6 39 46" src="https://github.com/cyl0424/Information_Security_Project/assets/63573867/78c693e1-9ddb-4fd9-997a-28d563753357">
-  <img width="733" alt="스크린샷 2024-05-31 오후 6 39 58" src="https://github.com/cyl0424/Information_Security_Project/assets/63573867/805a319b-1f17-4efa-b67c-c70fcd161f55">
-  <img width="733" alt="스크린샷 2024-05-31 오후 6 40 12" src="https://github.com/cyl0424/Information_Security_Project/assets/63573867/c28eaec8-1316-47bf-a3e9-bd7d2a34325c">
+  <img width="900" alt="스크린샷 2024-05-31 오후 7 06 00" src="https://github.com/cyl0424/Information_Security_Project/assets/63573867/6419d2ef-9b6b-46ec-91a5-9474ad9c3dc1">
+  <img width="900" alt="스크린샷 2024-05-31 오후 7 16 20" src="https://github.com/cyl0424/Information_Security_Project/assets/63573867/151e3f43-78ca-4b87-b378-bad142e898ba">
+  <img width="900" alt="스크린샷 2024-05-31 오후 8 07 24" src="https://github.com/cyl0424/Information_Security_Project/assets/63573867/e4ec2ac2-3864-42bd-9f4f-127c5c97fae7">
 
-
-
-
+  
+  
 ## Limitations
 - The approximate max function sometimes produces reversed results compared to sorting.
 - Execution time for the approximate max function is longer than expected.
