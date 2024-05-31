@@ -308,7 +308,7 @@ class HEAAN:
 
     def define_c0(self, ciphertext, ciphertext_s):
         temp_msg = self.sub_message(ciphertext, ciphertext_s)
-        print(f"temp_msg: {temp_msg}")
+        # print(f"temp_msg: {temp_msg}")
         # msg_m = self.create_n_values_msg((1 / 255), self.log_slots)
         # temp_res = self.mult_message(temp_msg, msg_m)
 
@@ -378,44 +378,27 @@ class HEAAN:
         self.evaluator.bootstrap(ciphertext, ciphertext)
 
     def approx_max(self, c, k):
-        # print(f"c: {c}")
         self.i = 0
 
         c_s = self.define_c_s()
-        print(f"c_s: {c_s}")
 
         while True:
-            print(f"i: {self.i}, k: {k}")
-
             c_0 = self.define_c0(c, c_s)
-            print(f"c_0: {c_0}")
-
             c_0_prime = self.define_c_prime(c_0)
-            print(f"c_0_prime: {c_0_prime}")
-
             c_1 = self.define_c1(c_0)
-            print(f"c_1: {c_1}")
-
             c_2 = self.define_c_2(c_1)
-            print(f"c_2: {c_2}")
 
             self.increase_i()
 
             if self.i == k:
                 c_2_prime = self.define_c_prime(c_2)
-                print(f"c_2_prime: {c_2_prime}")
-
                 c_3 = self.define_cipher_sub_one(c_2_prime)
-                print(f"c_3: {c_3}")
                 c_4 = self.define_cipher_sub_one(c_0_prime)
-                print(f"c_4: {c_4}")
 
                 c_out = self.define_c_out(c_4, c_2_prime, c_0_prime, c_3)
-                print(f"c_out: {c_out}")
 
                 return c_out
 
             c_tmp = self.define_c_tmp(c_2)
-            print(f"c_tmp: {c_tmp}")
+
             c_s = self.redefine_c_s(c_s, c_tmp)
-            print(f"c_s: {c_s}")
