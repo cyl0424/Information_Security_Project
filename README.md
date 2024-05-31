@@ -89,7 +89,7 @@ Once the application is running, open your browser and go to `http://127.0.0.1:5
 
 ## Demonstration
 - Set up the testing environment (requirements.txt)
-- Upload image
+- Upload image (You can get the test photos in ./static/uploads folder)
   <table>
     <tr>
       <td style="text-align: center;">
@@ -109,7 +109,9 @@ Once the application is running, open your browser and go to `http://127.0.0.1:5
 - Check and compare results using sorting and approximate max methods
   <img width="900" alt="스크린샷 2024-05-31 오후 7 06 00" src="https://github.com/cyl0424/Information_Security_Project/assets/63573867/6419d2ef-9b6b-46ec-91a5-9474ad9c3dc1">
   <img width="900" alt="스크린샷 2024-05-31 오후 7 16 20" src="https://github.com/cyl0424/Information_Security_Project/assets/63573867/151e3f43-78ca-4b87-b378-bad142e898ba">
+  <img width="900" alt="스크린샷 2024-05-31 오후 8 07 24" src="https://github.com/cyl0424/Information_Security_Project/assets/63573867/e4ec2ac2-3864-42bd-9f4f-127c5c97fae7">
 
+  
   
 ## Limitations
 - The approximate max function sometimes produces reversed results compared to sorting.
