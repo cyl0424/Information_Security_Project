@@ -109,6 +109,22 @@ class HEAAN:
         encrypt_messages = [self.encrypt_message(message=i) for i in messages]
         return encrypt_messages
 
+    def send_data_approx(self, matrix_data, n, s):
+        self.n = n
+        self.s = s
+        split_matrixes = self.split_matrix_approx(matrix_data, self.n, self.s)
+        messages = []
+
+        for i in range(len(split_matrixes)):
+            message = heaan.Message(self.log_slots)
+            for j, value in enumerate(split_matrixes[i]):
+                message[j] = value
+            messages.append(message)
+
+        print(f"messages: {messages}")
+        encrypt_messages = [self.encrypt_message(message=i) for i in messages]
+        return encrypt_messages
+
     # 암호화한 데이터 내림차순 정렬
     def sort_encrypt_messages(self, encrypt_messages):
         # 정렬된 암호문을 담기 위한 list
@@ -142,6 +158,40 @@ class HEAAN:
         return sorted_messages
 
     def split_matrix(self, matrix, n, s):
+        # 입력 행렬의 크기
+        h, w = len(matrix), len(matrix[0])
+
+        # Determine the padding required for height and width
+        padded_size = max(h, w)
+        padded_matrix = np.full((padded_size, padded_size), 0.5)  # Fill with padding value 0.5
+
+        # Copy original matrix into the padded matrix
+        padded_matrix[:h, :w] = matrix
+
+        # print(f"padded_matrix: {padded_matrix}\n")
+
+        # 윈도우 사이즈에 맞춰 log_slots, num_slots 값 변경
+        self.calculate_send_log_slots(n)
+        self.set_num_slots(self.log_slots)
+
+        # max값을 찾기위해 비교해야하는 수의 집합들을 담을 list
+        lists = []
+
+        # max값을 찾기위해 비교해야하는 수의 집합으로 matrix 분할
+        for i in range(0, padded_size - n + 1, s):
+            for j in range(0, padded_size - n + 1, s):
+                window = [padded_matrix[x][y] for x in range(i, i + n) for y in range(j, j + n)]
+
+                # 데이터의 길이가 num_slots보다 작을 경우 sort 함수 사용이 가능한 수 중 가장 작은 수인 -0.5를 padding으로 추가
+                if len(window) < self.num_slots:
+                    window.extend([-0.5] * (self.num_slots - len(window)))
+
+                lists.append(window)
+
+        # print(f"split: {lists}\n")
+        return lists
+
+    def split_matrix_approx(self, matrix, n, s):
         # 입력 행렬의 크기
         h, w = len(matrix), len(matrix[0])
 
@@ -258,6 +308,10 @@ class HEAAN:
 
     def define_c0(self, ciphertext, ciphertext_s):
         temp_msg = self.sub_message(ciphertext, ciphertext_s)
+        # print(f"temp_msg: {temp_msg}")
+        # msg_m = self.create_n_values_msg((1 / 255), self.log_slots)
+        # temp_res = self.mult_message(temp_msg, msg_m)
+
         result = self.sign_message(temp_msg)
 
         return result
@@ -324,44 +378,27 @@ class HEAAN:
         self.evaluator.bootstrap(ciphertext, ciphertext)
 
     def approx_max(self, c, k):
-        print(f"c: {c}")
         self.i = 0
 
         c_s = self.define_c_s()
-        print(f"c_s: {c_s}")
 
         while True:
-            print(f"i: {self.i}, k: {k}")
-
             c_0 = self.define_c0(c, c_s)
-            print(f"c_0: {c_0}")
-
             c_0_prime = self.define_c_prime(c_0)
-            print(f"c_0_prime: {c_0_prime}")
-
             c_1 = self.define_c1(c_0)
-            print(f"c_1: {c_1}")
-
             c_2 = self.define_c_2(c_1)
-            print(f"c_2: {c_2}")
 
             self.increase_i()
 
             if self.i == k:
                 c_2_prime = self.define_c_prime(c_2)
-                print(f"c_2_prime: {c_2_prime}")
-
                 c_3 = self.define_cipher_sub_one(c_2_prime)
-                print(f"c_3: {c_3}")
                 c_4 = self.define_cipher_sub_one(c_0_prime)
-                print(f"c_4: {c_4}")
 
                 c_out = self.define_c_out(c_4, c_2_prime, c_0_prime, c_3)
-                print(f"c_out: {c_out}")
 
                 return c_out
 
             c_tmp = self.define_c_tmp(c_2)
-            print(f"c_tmp: {c_tmp}")
+
             c_s = self.redefine_c_s(c_s, c_tmp)
-            print(f"c_s: {c_s}")

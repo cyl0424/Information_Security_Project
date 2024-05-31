@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef76106d-582c-4bd2-a1b9-f3fe6d81ce28" name="Changes" comment="modify typo">
+    <list default="true" id="ef76106d-582c-4bd2-a1b9-f3fe6d81ce28" name="Changes" comment="pooling with reverse">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/heaan_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/heaan_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/image_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_processing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/processed/processed_penguin_2.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/static/processed/processed_penguin_2.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,10 +54,11 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "Flask server.Flask (app.py).executor": "Run",
+    "Python.image_processing.executor": "Run",
     "Python.routes.executor": "Run",
     "Python.utils.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "approx__choour",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -102,7 +104,7 @@
       <workItem from="1716954272136" duration="8525000" />
       <workItem from="1716999755062" duration="5879000" />
       <workItem from="1717078167018" duration="2589000" />
-      <workItem from="1717119255646" duration="11119000" />
+      <workItem from="1717119255646" duration="17746000" />
     </task>
     <task id="LOCAL-00001" summary="flask web draft">
       <option name="closed" value="true" />
@@ -184,7 +186,39 @@
       <option name="project" value="LOCAL" />
       <updated>1717128633556</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="modify approx func">
+      <option name="closed" value="true" />
+      <created>1717138806705</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1717138806705</updated>
+    </task>
+    <task id="LOCAL-00012" summary="pooling with reverse">
+      <option name="closed" value="true" />
+      <created>1717142468424</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1717142468424</updated>
+    </task>
+    <task id="LOCAL-00013" summary="pooling with reverse">
+      <option name="closed" value="true" />
+      <created>1717143323834</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1717143323834</updated>
+    </task>
+    <task id="LOCAL-00014" summary="pooling with reverse">
+      <option name="closed" value="true" />
+      <created>1717143361030</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1717143361030</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,12 +244,15 @@
     <MESSAGE value="add padding to pooling method" />
     <MESSAGE value="add rgb pooling method" />
     <MESSAGE value="modify typo" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify typo" />
+    <MESSAGE value="modify approx func" />
+    <MESSAGE value="pooling with reverse" />
+    <option name="LAST_COMMIT_MESSAGE" value="pooling with reverse" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/is_maxpooling$app.coverage" NAME="app Coverage Results" MODIFIED="1716999416664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/is_maxpooling$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1717137647960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/is_maxpooling$utils.coverage" NAME="utils Coverage Results" MODIFIED="1717138566359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/is_maxpooling$image_processing.coverage" NAME="image_processing Coverage Results" MODIFIED="1717144365730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/is_maxpooling$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1717144433469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/is_maxpooling$utils.coverage" NAME="utils Coverage Results" MODIFIED="1717144430095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/is_maxpooling$routes.coverage" NAME="routes Coverage Results" MODIFIED="1716955232634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
