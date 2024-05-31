@@ -105,6 +105,7 @@ class HEAAN:
                 message[j] = value
             messages.append(message)
 
+        print(f"messages: {messages}")
         encrypt_messages = [self.encrypt_message(message=i) for i in messages]
         return encrypt_messages
 
@@ -132,9 +133,7 @@ class HEAAN:
 
         # list에 담긴 암호문을 각각 정렬 (자체구현 함수 사용)
         for i in encrypt_messages:
-            ciphertext_out_sort = heaan.Ciphertext(self.context)
-            # sort.sort(self.evaluator, i, ciphertext_out_sort, self.num_slots, False)
-
+            ciphertext_out_sort = self.approx_max(i, 2)
             sorted_messages.append(ciphertext_out_sort)
 
         print(f"sort: {sorted_messages}\n")
@@ -144,14 +143,11 @@ class HEAAN:
 
     def split_matrix(self, matrix, n, s):
         # 입력 행렬의 크기
-        h, w = matrix.shape
+        h, w = len(matrix), len(matrix[0])
 
         # Determine the padding required for height and width
         padded_size = max(h, w)
-        padded_matrix = np.full((padded_size, padded_size), 0.5)  # Fill with padding value -0.5
-
-        # print(f"matrix: {matrix}\n")
-        # print(f"padded_matrix: {padded_matrix}\n")
+        padded_matrix = np.full((padded_size, padded_size), 255.0)  # Fill with padding value 255
 
         # Copy original matrix into the padded matrix
         padded_matrix[:h, :w] = matrix
@@ -172,7 +168,7 @@ class HEAAN:
 
                 # 데이터의 길이가 num_slots보다 작을 경우 sort 함수 사용이 가능한 수 중 가장 작은 수인 -0.5를 padding으로 추가
                 if len(window) < self.num_slots:
-                    window.extend([-0.5] * (self.num_slots - len(window)))
+                    window.extend([0.0] * (self.num_slots - len(window)))
 
                 lists.append(window)
 
@@ -232,14 +228,26 @@ class HEAAN:
         approx.sign(self.evaluator, ciphertext, result_sign)
         return result_sign
 
+    def negate_message(self, ciphertext):
+        # ciphertext의 부호를 반대로 변경
+        result_negate = heaan.Ciphertext(self.context)
+        self.evaluator.negate(ciphertext, result_negate)
+        return result_negate
+
     def create_n_values_msg(self, n, log_slots):
-        # 모든 slot 값이 n인 ciphertext 반환
+        # 모든 slot 값이 n인 message 반환
         num_slots = 2 ** log_slots
         data = [n] * num_slots
         message = heaan.Message(log_slots)
         for i in range(num_slots):
             message[i] = data[i]
         return message
+
+    def define_c_s(self):
+        msg_half = self.create_n_values_msg(0.5, self.log_slots)
+        result = self.encrypt_message(msg_half)
+
+        return result
 
     def define_c1(self, ciphertext):
         # Ciphertext의 모든 slot 값을 더하고, 해당 값을 모든 slot에 넣음
@@ -254,7 +262,8 @@ class HEAAN:
 
         return result
 
-    def define_c_0_prime(self, ciphertext_0):
+    # It is used for defining c_0_prime and c_2_prime
+    def define_c_prime(self, ciphertext_0):
         msg_one = self.create_n_values_msg(1, self.log_slots)
         msg_half = self.create_n_values_msg(0.5, self.log_slots)
         temp_res = self.add_message(ciphertext_0, msg_one)
@@ -263,8 +272,10 @@ class HEAAN:
         return result
 
     def define_c_2(self, ciphertext_1):
+        self.bootstrap_cipher(ciphertext_1)
         msg_m = self.create_n_values_msg((1 / (self.num_slots)), self.log_slots)
         temp_res = self.mult_message(ciphertext_1, msg_m)
+
         result = self.sign_message(temp_res)
 
         return result
@@ -272,4 +283,85 @@ class HEAAN:
     def increase_i(self):
         self.i += 1
 
+    def define_cipher_sub_one(self, ciphertext):
+        msg_one = self.create_n_values_msg(1, self.log_slots)
+        result = self.sub_message(ciphertext, msg_one)
 
+        return result
+
+    def define_c_out(self, ciphertext4, ciphertext2_prime, ciphertext0_prime, ciphertext3):
+        mult_c4_c2_prime = self.mult_message(ciphertext4, ciphertext2_prime)
+        mult_c0_prime_c3 = self.mult_message(ciphertext0_prime, ciphertext3)
+
+        add_two_mult = self.add_message(mult_c4_c2_prime, mult_c0_prime_c3)
+
+        result = self.negate_message(add_two_mult)
+
+        return result
+
+    def define_c_tmp(self, ciphertext):
+        self.bootstrap_cipher(ciphertext)
+
+        msg_one = self.create_n_values_msg(1, self.log_slots)
+        msg_two = self.create_n_values_msg(2, self.log_slots)
+
+        c2_twice = self.mult_message(ciphertext, msg_two)
+
+        sub_one = self.sub_message(c2_twice, msg_one)
+
+        msg_half = self.create_n_values_msg(0.5 ** self.i, self.log_slots)
+
+        result = self.mult_message(sub_one, msg_half)
+
+        return result
+
+    def redefine_c_s(self, ciphertext_s, ciphertext_tmp):
+        add_ciphers = self.add_message(ciphertext_s, ciphertext_tmp)
+
+        return add_ciphers
+
+    def bootstrap_cipher(self, ciphertext):
+        self.evaluator.bootstrap(ciphertext, ciphertext)
+
+    def approx_max(self, c, k):
+        print(f"c: {c}")
+        self.i = 0
+
+        c_s = self.define_c_s()
+        print(f"c_s: {c_s}")
+
+        while True:
+            print(f"i: {self.i}, k: {k}")
+
+            c_0 = self.define_c0(c, c_s)
+            print(f"c_0: {c_0}")
+
+            c_0_prime = self.define_c_prime(c_0)
+            print(f"c_0_prime: {c_0_prime}")
+
+            c_1 = self.define_c1(c_0)
+            print(f"c_1: {c_1}")
+
+            c_2 = self.define_c_2(c_1)
+            print(f"c_2: {c_2}")
+
+            self.increase_i()
+
+            if self.i == k:
+                c_2_prime = self.define_c_prime(c_2)
+                print(f"c_2_prime: {c_2_prime}")
+
+                c_3 = self.define_cipher_sub_one(c_2_prime)
+                print(f"c_3: {c_3}")
+                c_4 = self.define_cipher_sub_one(c_0_prime)
+                print(f"c_4: {c_4}")
+
+                c_out = self.define_c_out(c_4, c_2_prime, c_0_prime, c_3)
+                print(f"c_out: {c_out}")
+
+                return c_out
+
+            c_tmp = self.define_c_tmp(c_2)
+            print(f"c_tmp: {c_tmp}")
+            c_s = self.redefine_c_s(c_s, c_tmp)
+            print(f"c_s: {c_s}")
