@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef76106d-582c-4bd2-a1b9-f3fe6d81ce28" name="Changes" comment="pooling with reverse">
+    <list default="true" id="ef76106d-582c-4bd2-a1b9-f3fe6d81ce28" name="Changes" comment="add comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/processed/processed_penguin_2.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/static/processed/processed_penguin_2.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +99,7 @@
       <workItem from="1716954272136" duration="8525000" />
       <workItem from="1716999755062" duration="5879000" />
       <workItem from="1717078167018" duration="2589000" />
-      <workItem from="1717119255646" duration="19003000" />
+      <workItem from="1717119255646" duration="20758000" />
     </task>
     <task id="LOCAL-00001" summary="flask web draft">
       <option name="closed" value="true" />
@@ -224,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717145316364</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="add comments">
+      <option name="closed" value="true" />
+      <created>1717146576413</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1717146576413</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,7 +257,8 @@
     <MESSAGE value="modify typo" />
     <MESSAGE value="modify approx func" />
     <MESSAGE value="pooling with reverse" />
-    <option name="LAST_COMMIT_MESSAGE" value="pooling with reverse" />
+    <MESSAGE value="add comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="add comments" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/is_maxpooling$app.coverage" NAME="app Coverage Results" MODIFIED="1716999416664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
